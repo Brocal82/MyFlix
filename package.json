@@ -1,0 +1,26 @@
+{
+  "name": "movie_api",
+  "version": "1.0.0",
+  "description": "MyFlix app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brocal82/MyFlix.git"
+  },
+  "keywords": [
+    "MyFlix"
+  ],
+  "author": "Antonio Ruiz Brocal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brocal82/MyFlix/issues"
+  },
+  "homepage": "https://github.com/Brocal82/MyFlix#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
+}
