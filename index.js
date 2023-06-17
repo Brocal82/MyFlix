@@ -69,16 +69,16 @@ const topMovies = [
   });
 
   // This Serves the statics files in the "public" folder
-app.use(express.static('public'));
+  app.use(express.static('public'));
 
-// Log all requests using Morgan
-app.use(morgan('common'));
+  // Log all requests using Morgan
+  app.use(morgan('common'));
 
-// Creating error-handling that log all errors to terminal
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Ups, something went wrong!');
-  });
+  // Creating error-handling that log all errors to terminal
+  app.use((err, req, res, next) => {
+      console.error(err.stack);
+      res.status(500).send('Ups, something went wrong!');
+    });
   
   app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
