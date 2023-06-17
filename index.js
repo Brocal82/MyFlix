@@ -3,7 +3,7 @@ const app = express();
 
 const morgan = require('morgan');
 
-// Define your top 10 movies data
+
 const topMovies = [
     {
         title: 'Inception',
