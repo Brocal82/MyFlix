@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 
 const morgan = require('morgan');
-
+const fs = require('fs');
+const path = require('path');
 
 const topMovies = [
     {
@@ -71,8 +72,11 @@ const topMovies = [
   // This Serves the statics files in the "public" folder
   app.use(express.static('public'));
 
+  // Creating a write stream (in append mode) to the log file
+  const accessLogStream = fs.createWriteStream(path.join(__dirname,'log.txt'), {flags: 'a'})
+
   // Log all requests using Morgan
-  app.use(morgan('common'));
+  app.use(morgan('combined', {stream: accessLogStream}));
 
   // Creating error-handling that log all errors to terminal
   app.use((err, req, res, next) => {
