@@ -9,7 +9,7 @@ const path = require('path');
 
 app.use(bodyParser.json());
 
-const users = [
+let users = [
     { 
       id: 1,
       name: "Antonio",
@@ -23,7 +23,7 @@ const users = [
 
 ]
 
-const movies = [
+let movies = [
   {
     Title: 'Inception',
     Genre: {
@@ -275,7 +275,7 @@ const movies = [
       users = users.filter( user => user.id != id);
       res.status(200).send(`User ${id} has been deleted`);
     } else {
-      res.status(400).send(`${id} has NOT been deleted`)
+      res.status(400).send(`User ${id} doesn't exist`)
     }
 
   })
