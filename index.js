@@ -11,14 +11,20 @@ app.use(bodyParser.json());
 
 let users = [
     { 
-      id: 1,
-      name: "Antonio",
-      favoriteMovies: []
+      ID: 1,
+      Username: "Antonio",
+      Password: "0001",
+      Email: "antonio@gmail.com",
+      Birthday: "01/01/2001",
+      FavoriteMovies: []
     },
     {
-      id: 2,
-      name: "Mara",
-      favoriteMovies: ["Top Gun"]
+      ID: 2,
+      Username: "Mara",
+      Password: "0002",
+      Email: "mara@gmail.com",
+      Birthday: "02/02/2002",
+      FavoriteMovies: ["Top Gun"]
     }
 
 ]
@@ -35,7 +41,8 @@ let movies = [
       YearOfBirth: 1970,
       Biography: 'Christopher Nolan is a British-American filmmaker known for his innovative storytelling and visually stunning films. He has directed several critically acclaimed movies, including "The Dark Knight" trilogy, "Inception," and "Interstellar."'
     },
-    Year: 2010
+    Cast: ['Leonardo DiCaprio', 'Joseph Gordon-Levitt', 'Ellen Page', 'Tom Hardy'],
+    Year: 2010,
   },
   {
     Title: 'The Dark Knight',
@@ -48,6 +55,7 @@ let movies = [
       YearOfBirth: 1970,
       Biography: 'Christopher Nolan is a British-American filmmaker known for his innovative storytelling and visually stunning films. He has directed several critically acclaimed movies, including "The Dark Knight" trilogy, "Inception," and "Interstellar."'
     },
+    Cast: ['Christian Bale', 'Heath Ledger', 'Aaron Eckhart', 'Gary Oldman'],
     Year: 2008
   },
   {
@@ -61,6 +69,7 @@ let movies = [
       YearOfBirth: 1970,
       Biography: 'Christopher Nolan is a British-American filmmaker known for his innovative storytelling and visually stunning films. He has directed several critically acclaimed movies, including "The Dark Knight" trilogy, "Inception," and "Interstellar."'
     },
+    Cast: ['Matthew McConaughey', 'Anne Hathaway', 'Jessica Chastain', 'Michael Caine'],
     Year: 2014
   },
   {
@@ -74,6 +83,7 @@ let movies = [
       YearOfBirth: 1979,
       Biography: 'Jordan Peele is an American filmmaker, actor, and comedian. He gained recognition for his sketch comedy work on the television series "Key & Peele." In recent years, he has ventured into directing and has received critical acclaim for his thought-provoking horror films, including "Get Out" and "Us."'
     },
+    Cast: ['Daniel Kaluuya', 'Allison Williams', 'Bradley Whitford', 'Catherine Keener'],
     Year: 2017
   },
   {
@@ -87,6 +97,7 @@ let movies = [
       YearOfBirth: 1962,
       Biography: 'David Fincher is an American filmmaker known for his dark and atmospheric movies. He has directed critically acclaimed films such as "Fight Club," "Gone Girl," and "The Social Network," which earned him an Academy Award nomination for Best Director.'
     },
+    Cast: ['Jesse Eisenberg', 'Andrew Garfield', 'Justin Timberlake', 'Rooney Mara'],
     Year: 2010
   },
   {
@@ -100,6 +111,7 @@ let movies = [
       YearOfBirth: 1945,
       Biography: 'George Miller is an Australian filmmaker and physician. He is best known for his work on the "Mad Max" series, including "Mad Max: Fury Road," which received critical acclaim and won multiple Academy Awards.'
     },
+    Cast: ['Tom Hardy', 'Charlize Theron', 'Nicholas Hoult', 'Hugh Keays-Byrne'],
     Year: 2015
   },
   {
@@ -113,6 +125,7 @@ let movies = [
       YearOfBirth: 1986,
       Biography: 'Ryan Coogler is an American filmmaker known for his socially conscious and visually stunning movies. He gained recognition for his debut film "Fruitvale Station" and achieved massive success with "Black Panther," becoming the first black director to helm a film in the Marvel Cinematic Universe.'
     },
+    Cast: ['Chadwick Boseman', 'Michael B. Jordan', 'Lupita Nyong\'o', 'Danai Gurira'],
     Year: 2018
   },
   {
@@ -126,6 +139,7 @@ let movies = [
       YearOfBirth: 1944,
       Biography: 'Tony Scott was a British filmmaker known for his stylish and fast-paced action films. He directed movies such as "Top Gun," "Man on Fire," and "True Romance," establishing himself as a prominent director in the action genre.'
     },
+    Cast: ['Tom Cruise', 'Kelly McGillis', 'Val Kilmer', 'Anthony Edwards'],
     Year: 1986
   },
   {
@@ -139,6 +153,7 @@ let movies = [
       YearOfBirth: 1969,
       Biography: 'Bong Joon-ho is a South Korean filmmaker known for his unique storytelling and genre-bending films. "Parasite" gained international acclaim, winning multiple awards, including four Academy Awards, and becoming the first South Korean film to win the Palme d\'Or at the Cannes Film Festival.'
     },
+    Cast: ['Song Kang-ho', 'Lee Sun-kyun', 'Cho Yeo-jeong', 'Choi Woo-shik'],
     Year: 2019
   },
   {
@@ -152,10 +167,10 @@ let movies = [
       YearOfBirth: 1985,
       Biography: 'Damien Chazelle is an American filmmaker and screenwriter. He rose to prominence with the critically acclaimed film "Whiplash," which garnered five Academy Award nominations. Chazelle later directed the musical "La La Land," which won six Academy Awards, including Best Director.'
     },
+    Cast: ['Miles Teller', 'J.K. Simmons', 'Melissa Benoist', 'Paul Reiser'],
     Year: 2014
   }
 ];
-
 
 
 
@@ -308,5 +323,5 @@ let movies = [
       });
   
   app.listen(8080, () => {
-    console.log('Your app is listening on port 8080.');
+    console.log('Your app is listening on port 8080. ');
   });
