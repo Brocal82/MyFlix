@@ -10,23 +10,29 @@ const path = require('path');
 app.use(bodyParser.json());
 
 let users = [
-    { 
-      Username: "Antonio",
-      Password: "0001",
-      Email: "antonio@gmail.com",
-      Birthday: "01/01/2001",
-      FavoriteMovies: []
-    },
-    {
-      ID: 2,
-      Username: "Mara",
-      Password: "0002",
-      Email: "mara@gmail.com",
-      Birthday: "02/02/2002",
-      FavoriteMovies: ["Top Gun"]
-    }
-
-]
+  { 
+    Username: "Antonio",
+    Password: "0001",
+    Email: "antonio@gmail.com",
+    Birthday: "01/01/2001",
+    FavoriteMovies: []
+  },
+  {
+    ID: 2,
+    Username: "Mara",
+    Password: "0002",
+    Email: "mara@gmail.com",
+    Birthday: "02/02/2002",
+    FavoriteMovies: ["Top Gun"]
+  },
+  {
+    Username: "Monica",
+    Password: "0003",
+    Email: "monica@gmail.com",
+    Birthday: "03/03/2003",
+    FavoriteMovies: []
+  }
+];
 
 let movies = [
   {
@@ -332,4 +338,5 @@ let movies = [
   
   app.listen(8080, () => {
     console.log('Your app is listening on port 8080.');
+
   });
