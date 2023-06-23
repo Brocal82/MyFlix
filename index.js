@@ -18,18 +18,31 @@ let users = [
     FavoriteMovies: []
   },
   {
-    ID: 2,
     Username: "Mara",
     Password: "0002",
     Email: "mara@gmail.com",
     Birthday: "02/02/2002",
-    FavoriteMovies: ["Top Gun"]
+    FavoriteMovies: []
   },
   {
     Username: "Monica",
     Password: "0003",
     Email: "monica@gmail.com",
     Birthday: "03/03/2003",
+    FavoriteMovies: []
+  },
+  {
+    Username: "Mariano",
+    Password: "0004",
+    Email: "mariano@gmail.com",
+    Birthday: "04/04/2004",
+    FavoriteMovies: []
+  },
+  {
+    Username: "Araceli",
+    Password: "0005",
+    Email: "araceli@gmail.com",
+    Birthday: "05/05/2005",
     FavoriteMovies: []
   }
 ];
