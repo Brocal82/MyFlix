@@ -289,25 +289,25 @@ let movies = [
 
 
 // Allow users to update user info(username) (UPDATE)
-  app.put('/users/:Username', (req, res) => {
-    Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
-      {
-        Username: req.body.Username,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
-      }
-    },
-    { new: true }, // This line makes sure that the updated document is returned
-    (err, updatedUser) => {
-      if(err) {
-        console.error(err);
-        res.status(500).send('Error: ' + err);
-      } else {
-        res.json(updatedUser);
-      }
+app.put('/users/:Username', (req, res) => {
+  Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
+    {
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Birthday: req.body.Birthday
+    }
+  },
+  { new: true }) // This line makes sure that the updated document is returned
+    .then(updatedUser => {
+      res.json(updatedUser);
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).send('Error: ' + err);
     });
-  });
+});
+
 
 // Allow users to add movies to ther favorites list and sent text of confirmations as added (CREATE)
 app.post('/users/:Username/movies/:MovieID', (req, res) => {
