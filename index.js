@@ -1,23 +1,24 @@
 const mongoose = require('mongoose');
 const Models = require('./models.js');
-
 const bodyParser = require('body-parser');
+const express = require('express');
+const morgan = require('morgan');
+const uuid = require('uuid');
+const fs = require('fs');
+const path = require('path');
+
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const Movies = Models.Movie;
 const Users = Models.User;
 
-mongoose.connect('mongodb://localhost:27017/MyFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect('mongodb://127.0.0.1/MyFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 
-const express = require('express');
-const app = express();
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
-const uuid = require('uuid');
-const morgan = require('morgan');
-const fs = require('fs');
-const path = require('path');
 
 
 
@@ -30,31 +31,18 @@ let users = [
     FavoriteMovies: []
   },
   {
+    ID: 2,
     Username: "Mara",
     Password: "0002",
     Email: "mara@gmail.com",
     Birthday: "02/02/2002",
-    FavoriteMovies: []
+    FavoriteMovies: ["Top Gun"]
   },
   {
     Username: "Monica",
     Password: "0003",
     Email: "monica@gmail.com",
     Birthday: "03/03/2003",
-    FavoriteMovies: []
-  },
-  {
-    Username: "Mariano",
-    Password: "0004",
-    Email: "mariano@gmail.com",
-    Birthday: "04/04/2004",
-    FavoriteMovies: []
-  },
-  {
-    Username: "Araceli",
-    Password: "0005",
-    Email: "araceli@gmail.com",
-    Birthday: "05/05/2005",
     FavoriteMovies: []
   }
 ];
@@ -64,7 +52,7 @@ let movies = [
     Title: 'Inception',
     Genre: {
       Name: 'Science Fiction',
-      Description: 'A mind-bending heist thriller set within the architecture of dreams.'
+      Description: 'A mind-bending heist thrillers set within the architecture of dreams.'
     },
     Director: {
       Name: 'Christopher Nolan',
@@ -212,9 +200,7 @@ let movies = [
   }
 ];
 
-
-  
-  // Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
+// Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
   app.get('/movies', (req, res) => {
     Movies.find()
       .then((movies) => {
@@ -238,61 +224,41 @@ let movies = [
       });
   });
 
-
-  // Get a user by username
-app.get('/users/:Username', (req, res) => {
-  Users.findOne({ Username: req.params.Username })
-    .then((user) => {
-      res.status(200).json(user);
-    })
-    .catch((err) => {
-      console.error(err);
-      res.status(500).send('Error: ' + err);
-    });
-});
-
-
-// Creating GET that returns movies by title (READ)
+  // Creating GET that returns movies by title (READ)
   app.get('/movies/:Title', (req, res) => {
     Movies.findOne({ Title: req.params.Title })
-      .then((movies) => {
-        res.json(movies);
+      .then((movie) => {
+        res.json(movie);
       })
       .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
   });
-
 
   // Creating GET that returns the Genre by name(READ)
   app.get('/movies/genres/:genreName', (req, res) => {
     Movies.findOne({ 'Genre.Name': req.params.genreName })
-      .then((movies) => {
-        res.status(200).json(movies);
+      .then((movie) => {
+        res.status(200).json(movie.Genre);
       })
       .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
   });
-
-
-
+  
   // Creating GET that returns data from Director by name(READ)
-  app.get('/movies/directors/:directorsName', (req, res) => {
-    Movies.findOne({ 'Director.Name': req.params.directorsName })
-      .then((movies) => {
-        res.status(200).json(movies);
+  app.get('/movies/directors/:directorName', (req, res) => {
+    Movies.findOne({ 'Director.Name': req.params.directorName })
+      .then((movie) => {
+        res.json(movie.Director);
       })
       .catch((err) => {
         console.error(err);
         res.status(500).send('Error: ' + err);
       });
   });
-
-
-
 
 // Allow new users to Register (CREATE)
   app.post('/users', (req, res) => {
@@ -320,7 +286,6 @@ app.get('/users/:Username', (req, res) => {
         res.status(500).send('Error: ' + error);
       });
   });
-  
 
 
 // Allow users to update user info(username) (UPDATE)
@@ -343,11 +308,8 @@ app.get('/users/:Username', (req, res) => {
       }
     });
   });
-  
 
-
-
-// Allow users to add movies to their favorites list
+// Allow users to add movies to ther favorites list and sent text of confirmations as added (CREATE)
   app.post('/users/:Username/movies/:MovieID', (req, res) => {
     Users.findOneAndUpdate({ Username: req.params.Username }, {
       $push: { FavoriteMovies: req.params.MovieID }
@@ -362,7 +324,6 @@ app.get('/users/:Username', (req, res) => {
       }
     });
   });
-
 
   // Allow users to remove a movie from the favorites list (DELETE)
   app.delete('/users/:Username/movies/:MovieID', (req, res) => {
@@ -380,10 +341,7 @@ app.get('/users/:Username', (req, res) => {
     });
   });
 
-
-
-
-//Allow users to delete the registration by username
+  //Allow users to delete the registration
 app.delete('/users/:Username', (req, res) => {
   Users.findOneAndRemove({ Username: req.params.Username })
     .then((user) => {
