@@ -74,3 +74,8 @@ Timestamp: Thu Jun 15 2023 09:50:01 GMT+0200 (hora de verano de Europa central)
 ::1 - - [29/Jun/2023:07:46:09 +0000] "DELETE /users/Mariano/64956615b3edfe5813e4da72 HTTP/1.1" 404 180 "-" "PostmanRuntime/7.32.3"
 ::1 - - [29/Jun/2023:07:46:29 +0000] "DELETE /users/Mariano/64956615b3edfe5813e4da72 HTTP/1.1" 404 180 "-" "PostmanRuntime/7.32.3"
 ::1 - - [29/Jun/2023:07:46:40 +0000] "DELETE /users/Mariano/64956615b3edfe5813e4da72 HTTP/1.1" 404 180 "-" "PostmanRuntime/7.32.3"
+::1 - - [30/Jun/2023:14:09:18 +0000] "POST /logiuser/?Username=Antonete&Password=00001 HTTP/1.1" 404 149 "-" "PostmanRuntime/7.32.3"
+::1 - - [30/Jun/2023:14:09:29 +0000] "POST /login/user/?Username=Antonete&Password=00001 HTTP/1.1" 404 151 "-" "PostmanRuntime/7.32.3"
+::1 - - [30/Jun/2023:14:09:36 +0000] "POST /login/users/?Username=Antonete&Password=00001 HTTP/1.1" 404 152 "-" "PostmanRuntime/7.32.3"
+::1 - - [30/Jun/2023:14:24:58 +0000] "POST /MyFlixDB/login HTTP/1.1" 404 154 "-" "PostmanRuntime/7.32.3"
+::1 - - [30/Jun/2023:14:30:35 +0000] "POST /users/login?Username=Antonete&Password=00001 HTTP/1.1" 404 151 "-" "PostmanRuntime/7.32.3"
