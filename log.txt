@@ -79,3 +79,7 @@ Timestamp: Thu Jun 15 2023 09:50:01 GMT+0200 (hora de verano de Europa central)
 ::1 - - [30/Jun/2023:14:09:36 +0000] "POST /login/users/?Username=Antonete&Password=00001 HTTP/1.1" 404 152 "-" "PostmanRuntime/7.32.3"
 ::1 - - [30/Jun/2023:14:24:58 +0000] "POST /MyFlixDB/login HTTP/1.1" 404 154 "-" "PostmanRuntime/7.32.3"
 ::1 - - [30/Jun/2023:14:30:35 +0000] "POST /users/login?Username=Antonete&Password=00001 HTTP/1.1" 404 151 "-" "PostmanRuntime/7.32.3"
+::1 - - [01/Jul/2023:07:08:37 +0000] "POST /users HTTP/1.1" 404 145 "-" "PostmanRuntime/7.32.3"
+::1 - - [01/Jul/2023:07:17:51 +0000] "DELETE /users/ HTTP/1.1" 404 148 "-" "PostmanRuntime/7.32.3"
+::1 - - [01/Jul/2023:07:18:19 +0000] "DELETE /users/ HTTP/1.1" 404 148 "-" "PostmanRuntime/7.32.3"
+::1 - - [01/Jul/2023:07:19:33 +0000] "POST /login/Antonio HTTP/1.1" 404 153 "-" "PostmanRuntime/7.32.3"
