@@ -269,6 +269,7 @@ let movies = [
 
 // Allow new users to Register (CREATE)
   app.post('/users', (req, res) => {
+    let hashedPassword = Users.hashedPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username })
       .then((user) => {
         if (user) {
@@ -277,7 +278,7 @@ let movies = [
           Users
             .create({
               Username: req.body.Username,
-              Password: req.body.Password,
+              Password: hashedPassword,
               Email: req.body.Email,
               Birthday: req.body.Birthday
             })
