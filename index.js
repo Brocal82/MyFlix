@@ -421,8 +421,9 @@ app.delete('/users/:Username', passport.authenticate('jwt', {session: false}), (
         console.error(err.stack);
         res.status(500).send('Ups, something went wrong!');
       });
-  
-  app.listen(8080, () => {
+      
+  const port = process.env.PORT || 8080;
+  app.listen(port, '0.0.0.0',() => {
     console.log('Your app is listening on port 8080.');
 
   });
