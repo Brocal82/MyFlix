@@ -84,3 +84,4 @@ Timestamp: Thu Jun 15 2023 09:50:01 GMT+0200 (hora de verano de Europa central)
 ::1 - - [01/Jul/2023:07:18:19 +0000] "DELETE /users/ HTTP/1.1" 404 148 "-" "PostmanRuntime/7.32.3"
 ::1 - - [01/Jul/2023:07:19:33 +0000] "POST /login/Antonio HTTP/1.1" 404 153 "-" "PostmanRuntime/7.32.3"
 127.0.0.1 - - [05/Jul/2023:09:47:40 +0000] "POST /users/Antonio HTTP/1.1" 404 153 "-" "PostmanRuntime/7.32.3"
+127.0.0.1 - - [07/Jul/2023:04:42:16 +0000] "GET /movie HTTP/1.1" 404 144 "-" "PostmanRuntime/7.32.3"
