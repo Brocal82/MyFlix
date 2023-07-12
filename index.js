@@ -206,7 +206,7 @@ let movies = [
 ];
 
 // Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
-  app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {  //Applying JWT authentication to endpoint
+  app.get('/movies', (req, res) => {  //Applying JWT authentication to endpoint
     Movies.find()
       .then((movies) => {
         res.status(201).json(movies);
