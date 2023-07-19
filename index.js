@@ -9,13 +9,13 @@ const path = require('path');
 const app = express();
 const { check, validationResult } = require('express-validator');
 
+const cors = require('cors');
+app.use(cors());
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let auth = require('./auth')(app);
-
-const cors = require('cors');
-app.use(cors());
 
 const passport = require('passport');
 require('./passport');
@@ -204,6 +204,7 @@ let movies = [
     Featured: false
   }
 ];
+
 
 // Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
   app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {  //Applying JWT authentication to endpoint
