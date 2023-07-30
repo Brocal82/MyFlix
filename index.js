@@ -10,7 +10,7 @@ const app = express();
 const { check, validationResult } = require('express-validator');
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://my-flix-app1982-c9c41fd3e5b8.herokuapp.com', 'https://myflix1982.netlify.app'];
+let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://my-flix-app1982-c9c41fd3e5b8.herokuapp.com'];
 
 app.use(cors({
   origin: (origin, callback) => {
