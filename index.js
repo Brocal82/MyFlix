@@ -10,18 +10,6 @@ const app = express();
 const { check, validationResult } = require('express-validator');
 
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:8080', 'http://testsite.com', 'http://localhost:1234', 'https://my-flix-app1982-c9c41fd3e5b8.herokuapp.com','https://my-flix1982.netlify.app'];
-
-/*app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) === -1) { // If a specific origin isn’t found on the list of allowed origins
-      let message = 'The CORS policy for this application doesn’t allow access from origin ' + origin;
-      return callback(new Error(message), false);
-    }
-    return callback(null, true);
-  }
-}));*/
 
 app.use(cors());
 
@@ -38,185 +26,6 @@ const Users = Models.User;
 
 //mongoose.connect('mongodb://127.0.0.1/MyFlixDB', { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true });
-
-
-let users = [
-  { 
-    Username: "Antonio",
-    Password: "0001",
-    Email: "antonio@gmail.com",
-    Birthday: "01/01/2001",
-    FavoriteMovies: []
-  },
-  {
-    ID: 2,
-    Username: "Mara",
-    Password: "0002",
-    Email: "mara@gmail.com",
-    Birthday: "02/02/2002",
-    FavoriteMovies: ["Top Gun"]
-  },
-  {
-    Username: "Monica",
-    Password: "0003",
-    Email: "monica@gmail.com",
-    Birthday: "03/03/2003",
-    FavoriteMovies: []
-  }
-];
-
-let movies = [
-  {
-    Title: 'Inception',
-    Genre: {
-      Name: 'Science Fiction',
-      Description: 'A mind-bending heist thrillers set within the architecture of dreams.'
-    },
-    Director: {
-      Name: 'Christopher Nolan',
-      Bio: 'Christopher Nolan is a British-American filmmaker known for his innovative storytelling and visually stunning films. He has directed several critically acclaimed movies, including "The Dark Knight" trilogy, "Inception," and "Interstellar."',
-      BirthYear: 1970,
-      DeathYear: null
-    },
-    ImageUrl: 'inception.jpg',
-    Featured: true
-  },
-  {
-    Title: 'The Dark Knight',
-    Genre: {
-      Name: 'Action',
-      Description: 'A gritty crime thriller featuring the iconic superhero Batman.'
-    },
-    Director: {
-      Name: 'Christopher Nolan',
-      Bio: 'Christopher Nolan is a British-American filmmaker known for his innovative storytelling and visually stunning films. He has directed several critically acclaimed movies, including "The Dark Knight" trilogy, "Inception," and "Interstellar."',
-      BirthYear: 1970,
-      DeathYear: null
-    },
-    ImageUrl: 'darkknight.jpg',
-    Featured: false
-  },
-  {
-    Title: 'Interstellar',
-    Genre: {
-      Name: 'Science Fiction',
-      Description: 'An epic space exploration journey to save humanity from a dying Earth.'
-    },
-    Director: {
-      Name: 'Christopher Nolan',
-      Bio: 'Christopher Nolan is a British-American filmmaker known for his innovative storytelling and visually stunning films. He has directed several critically acclaimed movies, including "The Dark Knight" trilogy, "Inception," and "Interstellar."',
-      BirthYear: 1970,
-      DeathYear: null
-    },
-    ImageUrl: 'interstellar.jpg',
-    Featured: true
-  },
-  {
-    Title: 'Get Out',
-    Genre: {
-      Name: 'Horror',
-      Description: 'A suspenseful horror film tackling racial themes in a unique and chilling way.'
-    },
-    Director: {
-      Name: 'Jordan Peele',
-      Bio: 'Jordan Peele is an American filmmaker, actor, and comedian. He gained recognition for his sketch comedy work on the television series "Key & Peele." In recent years, he has ventured into directing and has received critical acclaim for his thought-provoking horror films, including "Get Out" and "Us."',
-      BirthYear: 1979,
-      DeathYear: null
-    },
-    ImageUrl: 'getout.jpg',
-    Featured: false
-  },
-  {
-    Title: 'The Social Network',
-    Genre: {
-      Name: 'Drama',
-      Description: 'A captivating drama portraying the rise of Facebook and its founder Mark Zuckerberg.'
-    },
-    Director: {
-      Name: 'David Fincher',
-      Bio: 'David Fincher is an American filmmaker known for his dark and atmospheric movies. He has directed critically acclaimed films such as "Fight Club," "Gone Girl," and "The Social Network," which earned him an Academy Award nomination for Best Director.',
-      BirthYear: 1962,
-      DeathYear: null
-    },
-    ImageUrl: 'socialnetwork.jpg',
-    Featured: true
-  },
-  {
-    Title: 'Mad Max: Fury Road',
-    Genre: {
-      Name: 'Action',
-      Description: 'An adrenaline-fueled post-apocalyptic action film set in a desert wasteland.'
-    },
-    Director: {
-      Name: 'George Miller',
-      Bio: 'George Miller is an Australian filmmaker and physician. He is best known for his work on the "Mad Max" series, including "Mad Max: Fury Road," which received critical acclaim and won multiple Academy Awards.',
-      BirthYear: 1945,
-      DeathYear: null
-    },
-    ImageUrl: 'madmax.jpg',
-    Featured: false
-  },
-  {
-    Title: 'Black Panther',
-    Genre: {
-      Name: 'Action',
-      Description: 'A groundbreaking superhero film celebrating African culture and its hero, Black Panther.'
-    },
-    Director: {
-      Name: 'Ryan Coogler',
-      Bio: 'Ryan Coogler is an American filmmaker known for his socially conscious and visually stunning movies. He gained recognition for his debut film "Fruitvale Station" and achieved massive success with "Black Panther," becoming the first black director to helm a film in the Marvel Cinematic Universe.',
-      BirthYear: 1986,
-      DeathYear: null
-    },
-    ImageUrl: 'blackpanther.jpg',
-    Featured: true
-  },
-  {
-    Title: 'Top Gun',
-    Genre: {
-      Name: 'Action',
-      Description: 'An iconic \'80s action film showcasing the high-flying world of fighter pilots.'
-    },
-    Director: {
-      Name: 'Tony Scott',
-      Bio: 'Tony Scott was a British filmmaker known for his stylish and fast-paced action films. He directed movies such as "Top Gun," "Man on Fire," and "True Romance," establishing himself as a prominent director in the action genre.',
-      BirthYear: 1944,
-      DeathYear: 2012
-    },
-    ImageUrl: 'topgun.jpg',
-    Featured: false
-  },
-  {
-    Title: 'Parasite',
-    Genre: {
-      Name: 'Thriller',
-      Description: 'A gripping and darkly comedic tale of class struggle and deception.'
-    },
-    Director: {
-      Name: 'Bong Joon-ho',
-      Bio: 'Bong Joon-ho is a South Korean filmmaker known for his unique storytelling and genre-bending films. "Parasite" gained international acclaim, winning multiple awards, including four Academy Awards, and becoming the first South Korean film to win the Palme d\'Or at the Cannes Film Festival.',
-      BirthYear: 1969,
-      DeathYear: null
-    },
-    ImageUrl: 'parasite.jpg',
-    Featured: true
-  },
-  {
-    Title: 'Whiplash',
-    Genre: {
-      Name: 'Drama',
-      Description: 'An intense drama exploring the pursuit of greatness and the cost of ambition in the world of music.'
-    },
-    Director: {
-      Name: 'Damien Chazelle',
-      Bio: 'Damien Chazelle is an American filmmaker and screenwriter. He rose to prominence with the critically acclaimed film "Whiplash," which garnered five Academy Award nominations. Chazelle later directed the musical "La La Land," which won six Academy Awards, including Best Director.',
-      BirthYear: 1985,
-      DeathYear: null
-    },
-    ImageUrl: 'whiplash.jpg',
-    Featured: false
-  }
-];
 
 
 // Creating GET route at endpoint "/movies" returning JSON object (Returns all movies)
@@ -332,6 +141,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false}),
   check('Email', 'Email does not appear to be valid').isEmail()
 ], (req, res) => {
 
+  let hashedPassword = Users.hashPassword(req.body.Password);
   let errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
@@ -340,7 +150,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false}),
   Users.findOneAndUpdate({ Username: req.params.Username }, { $set:
     {
       Username: req.body.Username,
-      Password: req.body.Password,
+      Password: hashedPassword,
       Email: req.body.Email,
       Birthday: req.body.Birthday
     }
