@@ -1,5 +1,5 @@
 Movie_API
-This project is a backend application developed using Node.js and Express. It serves as the backend for a movie-focused application, offering users a range of features including:
+Movie_API is a backend application developed using Node.js and Express. It serves as the backend for a movie-focused application, offering users a range of features including:
 
 User authentication and login.
 User registration.
@@ -9,16 +9,18 @@ Updating user profile information.
 Removing movies from the favorites list.
 Deleting user profile.
 Prerequisites
-Install Node.js
-Install mongoDB
-Use npm install -- to install various dependencies
+Before you get started, make sure you have the following installed:
+
+Node.js
+MongoDB
+Use npm install to install various dependencies.
 Technologies Used
 Node.js
 Express
-Mongoose (mongoDB) - Database
+Mongoose (MongoDB) - Database
 Postman
 App Details
-App is hosted on Render, Click here
-https://brocal82.github.io/MyFlix/
+The app is hosted on Render. You can access it here.
+
 Dependencies
-List of dependencies can be found under package.json file
+A list of dependencies can be found in the package.json file.
