@@ -14,9 +14,10 @@ const { check, validationResult } = require('express-validator');
 // Import and use the CORS module to enable Cross-Origin Resource Sharing
 const cors = require('cors');
 app.use(cors());
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // Import authentication modules and configure authentication
-const auth = require('./auth')(app);
+require('./auth')(app);
 const passport = require('passport');
 require('./passport'); // Import and configure Passport.js
 require('dotenv').config(); // Configure environment variables using Dotenv
